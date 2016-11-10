@@ -52,10 +52,12 @@ func main() {
 
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	for _ = range ticker.C {
-		cmd := exec.Command(IdeCmd, matches[r.Intn(total)])
+		name := matches[r.Intn(total)]
+		cmd := exec.Command(IdeCmd, name)
 		err := cmd.Start()
 		if err != nil {
 			log.Panicln(err)
 		}
+		log.Println("->", name)
 	}
 }

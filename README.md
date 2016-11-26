@@ -1,1 +1,3 @@
 # hhscr
+
+go install
